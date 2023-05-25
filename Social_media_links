@@ -1,0 +1,18 @@
+import requests
+import bs4
+import lxml
+
+url=input("Enter a URL : ")
+links=[]
+website=requests.get(url)
+print("\n")
+website_text=website.text
+soup=bs4.BeautifulSoup(website_text,"lxml")
+for link in soup.find_all('a'):
+    links.append(link.get('href'))
+Social_media = ['facebook','twitter','linkedin','instagram','youtube','whatsapp']
+for link in links:
+    for i in range(len(Social_media)):   
+        if link is not None and Social_media[i] in link  :
+            print(link)  
+
