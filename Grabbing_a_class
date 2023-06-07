@@ -1,0 +1,9 @@
+#web scraping
+import requests
+import bs4 
+import lxml 
+
+url=requests.get('https://en.wikipedia.org/wiki/Grace_Hopper')
+soup=bs4.BeautifulSoup(url.text,"lxml")
+for item in soup.select('.vector-toc-text'):
+    print(item.text)
